@@ -6,6 +6,7 @@ package pruebaword;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Scanner;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -43,6 +44,17 @@ public class PruebaWord {
                 e.printStackTrace();
             }
         }
+        
+         System.out.println("Presiona Enter para cerrar el programa...");
+
+        // Crear un objeto Scanner para leer la entrada del usuario
+        Scanner scanner = new Scanner(System.in);
+
+        // Esperar a que el usuario presione Enter
+        scanner.nextLine();
+
+        // Cerrar el scanner
+        scanner.close();
     }
     
 }

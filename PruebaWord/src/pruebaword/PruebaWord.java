@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -25,6 +26,16 @@ public class PruebaWord {
     public static void main(String[] args) {
        // Crear un nuevo documento de Word
         XWPFDocument documento = new XWPFDocument();
+        
+        // Crear un título
+        XWPFParagraph titulo = documento.createParagraph();
+        titulo.setAlignment(ParagraphAlignment.CENTER); // Centrar el título
+        XWPFRun runTitulo = titulo.createRun();
+        runTitulo.setText("Título del Documento");
+        runTitulo.setBold(true); // Establecer el texto en negrita
+        runTitulo.setFontSize(20); // Establecer tamaño de fuente para el título
+        titulo.setSpacingAfter(200); // Espacio después del título
+
 
         // Crear un párrafo
         XWPFParagraph parrafo = documento.createParagraph();

@@ -6,6 +6,8 @@ package pruebaword;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -29,11 +31,19 @@ public class PruebaWord {
         XWPFRun run = parrafo.createRun();
         run.setText("Este es un documento de ejemplo creado con Apache POI en Java.");
         run.setFontSize(14);
+         // Obtener la fecha y hora del sistema
+        String formato = "yyyy-MM-dd_HH-mm-ss"; // Formato de fecha y hora
+        SimpleDateFormat sdf = new SimpleDateFormat(formato);
+        String fechaYHora = sdf.format(new Date());
+        
+        // Crear el nombre del archivo
+        String nombreArchivo = "C:/ejemplo_" + fechaYHora + ".docx";
+        
 
         // Guardar el documento en el disco C:
-        try (FileOutputStream out = new FileOutputStream("C:/ejemplo.docx")) {
+        try (FileOutputStream out = new FileOutputStream(nombreArchivo)) {
             documento.write(out);
-            System.out.println("Documento creado exitosamente en C:/ejemplo.docx");
+            System.out.println("Documento creado exitosamente en " + nombreArchivo);
         } catch (IOException e) {
             System.err.println("Error al crear el documento: " + e.getMessage());
         } finally {
